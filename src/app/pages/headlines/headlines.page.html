@@ -9,11 +9,15 @@
     <ion-row>
       <ion-col>
         <ion-segment scrollable>
-          <ion-segment-button color="primary" class="category" *ngFor="let catogry of catogries"> 
-              <ion-label>{{catogry}}</ion-label>
+          <ion-segment-button color="primary" class="category" 
+            *ngFor="let category of categories"
+            (click)="onGetCategoryData(category)"> 
+              <ion-label>{{category}}</ion-label>
           </ion-segment-button>
         </ion-segment>
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <app-articles [news]="news"></app-articles>
 </ion-content>
