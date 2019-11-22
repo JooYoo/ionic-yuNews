@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NewsService } from '../../services/news.service';
 
 @Component({
   selector: 'app-sources',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sources.page.scss'],
 })
 export class SourcesPage implements OnInit {
+  sources;
+  fakeSources = new Array(20);
 
-  constructor() { }
+  constructor(private newsService: NewsService) { }
 
   ngOnInit() {
+    this.sources = this.newsService.getData('sources');
   }
 
 }

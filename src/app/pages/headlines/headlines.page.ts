@@ -23,9 +23,14 @@ export class HeadlinesPage implements OnInit {
   constructor(private newsService: NewsService) { }
 
   ngOnInit() {
+    this.getCategoryData(this.categories[3]);
   }
 
   onGetCategoryData(category) {
+    this.getCategoryData(category);
+  }
+
+  getCategoryData(category) {
     this.news = this.newsService.getData(
       `everything?q=${category.toLowerCase()}`
     );
