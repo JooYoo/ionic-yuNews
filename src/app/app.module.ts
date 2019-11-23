@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +19,8 @@ import { ComponentsModule } from './components/components.module';
     IonicModule.forRoot({mode: 'md'}), 
     AppRoutingModule, 
     HttpClientModule, 
-    ComponentsModule],
+    ComponentsModule, 
+    PipesModule],
   providers: [
     StatusBar,
     SplashScreen,

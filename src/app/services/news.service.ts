@@ -30,14 +30,15 @@ export class NewsService {
 
   getData(url) {
     //this.showLoading();
-    return this.http.get(`${apiUrl}/${url}`, { params }).pipe(
-      tap(value => {
+    return this.http.get(`${apiUrl}/${url}`, { params })
+    //.pipe(
+     // tap(value => {
         // if(this.loading){
         //   this.loading.dismiss();
         // }
-        console.log(value);
-      })
-    );
+       // console.log(value);
+     // })
+    //);
   }
 
   
