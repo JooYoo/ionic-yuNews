@@ -12,11 +12,19 @@ export class FavoritesPage implements OnInit {
   constructor(private storage: Storage) { }
 
   ngOnInit() {
+    this.getFavorites();
+  }
+
+  getFavorites(){
     this.storage.get('favorite').then(val => {
       if (val != null) {
         this.sources = JSON.parse(val);
       }
     });
+  }
+
+  onRefresh(){
+    this.getFavorites();
   }
 
 }
