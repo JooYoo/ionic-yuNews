@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-sources',
@@ -11,7 +12,7 @@ export class SourcesPage implements OnInit {
   fakeSources = new Array(20);
   term = '';
 
-  constructor(private newsService: NewsService) { }
+  constructor(private newsService: NewsService, private storage: Storage) { }
 
   ngOnInit() {
     // this.sources = this.newsService.getData('sources');
@@ -20,8 +21,16 @@ export class SourcesPage implements OnInit {
     });
   }
 
-  favorite(source){
-    console.log(source);
+  favorite(source) {
+    //console.log(source);
+    this.storage.get('favorite').then(val => {
+      let items = [];
+      if (val != null) {
+        items = JSON.parse(val);
+      }
+      items.push(source);
+      this.storage.set('favorite', JSON.stringify(items));
+    });
   }
 
 }

@@ -1,5 +1,7 @@
 {
   "name": "ionic-yuNews",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
