@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>content</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/top-news"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="data">
+    <div>{{data}}</div>
+  </ion-card>
+
+</ion-content>
