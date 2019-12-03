@@ -19,7 +19,7 @@ export class ArticleComponent implements OnInit {
         content: this.article.content
       }
     };
-    this.router.navigate(['content'], navigationExtra);
+    this.router.navigate(['tabs/content'], navigationExtra);
   }
 
 }

@@ -63,6 +63,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'content',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../content/content.module').then(m => m.ContentPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/top-news',
         pathMatch: 'full'
