@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
 import { Storage } from '@ionic/storage';
 import { ToastController } from '@ionic/angular';
+import { Router, NavigationExtras} from '@angular/router';
 
 @Component({
   selector: 'app-sources',
@@ -15,7 +16,8 @@ export class SourcesPage implements OnInit {
 
   constructor(private newsService: NewsService, 
               private storage: Storage,
-              private toastController: ToastController) { }
+              private toastController: ToastController,
+              private router: Router) { }
 
   ngOnInit() {
     // this.sources = this.newsService.getData('sources');
@@ -43,6 +45,16 @@ export class SourcesPage implements OnInit {
       this.storage.set('favorite', JSON.stringify(items));
       this.presentToast();
     });
+  }
+
+  openSource(source){
+    console.log(source.id)
+    let navigationExtra: NavigationExtras = {
+      state: {
+        id: source.id
+      }
+    };
+    this.router.navigate(['tabs/source'], navigationExtra);
   }
 
 }

@@ -22,7 +22,7 @@
         <ion-list>
           <ion-item-sliding>
 
-            <ion-item color="light" href="/tabs/sources/{{source.id}}">
+            <ion-item color="light" (click)="openSource(source)">
               <ion-label text-wrap>
                 <ion-text>
                   <h2>

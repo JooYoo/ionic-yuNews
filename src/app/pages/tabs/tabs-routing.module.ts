@@ -34,12 +34,12 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../sources/sources.module').then(m => m.SourcesPageModule)
-          },
-          {
-            path: ':id',
-            loadChildren: () =>
-              import('../source/source.module').then(m => m.SourcePageModule)
           }
+          // {
+          //   path: ':id',
+          //   loadChildren: () =>
+          //     import('../source/source.module').then(m => m.SourcePageModule)
+          // }
         ]
       },
       {
@@ -59,6 +59,16 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../settings/settings.module').then(m => m.SettingsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'source',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../source/source.module').then(m => m.SourcePageModule)
           }
         ]
       },
@@ -90,4 +100,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

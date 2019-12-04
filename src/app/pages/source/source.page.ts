@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../services/news.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-source',
@@ -11,11 +11,25 @@ export class SourcePage implements OnInit {
   news;
   id;
   constructor(private newsService: NewsService,
-              private activedRoute: ActivatedRoute) { }
+    private activedRoute: ActivatedRoute,
+    private router: Router) {
+      this.receiveFromSources();
+  }
 
   ngOnInit() {
-    this.id = this.activedRoute.snapshot.paramMap.get('id');
-    this.news = this.newsService.getData(`everything?sources=${this.id}`);
+   // this.id = this.activedRoute.snapshot.paramMap.get('id');
+   // this.news = this.newsService.getData(`everything?sources=${this.id}`);
   }
+
+  receiveFromSources() {
+    this.activedRoute.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.id = this.router.getCurrentNavigation().extras.state.id;
+        this.news = this.newsService.getData(`everything?sources=${this.id}`);
+      }
+    })
+  }
+
+
 
 }
