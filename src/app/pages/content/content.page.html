@@ -7,9 +7,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card *ngIf="data">
-    <div>{{data}}</div>
-  </ion-card>
+<ion-content padding>
+  <div *ngIf="data">
+    <h3 class="title__article">{{data.title}}</h3>
+    <h5 class="source__article">{{data.source.name}}</h5>
+
+
+    <img class="img__article" *ngIf="data.urlToImage" [src]="data.urlToImage"/>
+    <p>{{data.description}}</p>
+    <p>{{data.content}}</p>
+
+    <h6>
+      <div class="author__article">
+        {{data.author}}
+      </div>
+      <div class="date__article">
+        {{data.publishedAt | date:'medium'}}
+      </div>
+    </h6>
+
+  </div>
 
 </ion-content>

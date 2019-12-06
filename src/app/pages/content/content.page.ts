@@ -20,7 +20,7 @@ export class ContentPage implements OnInit {
   receiveFromArticle(){
     this.route.queryParams.subscribe(params =>{
       if(this.router.getCurrentNavigation().extras.state){
-        this.data = this.router.getCurrentNavigation().extras.state.content;
+        this.data = this.router.getCurrentNavigation().extras.state.data;
       }
     })
   }

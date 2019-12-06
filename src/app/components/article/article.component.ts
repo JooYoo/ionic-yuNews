@@ -11,12 +11,12 @@ export class ArticleComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {console.log(this.article)}
 
   openContent(){
     let navigationExtra: NavigationExtras = {
       state: {
-        content: this.article.content
+        data: this.article
       }
     };
     this.router.navigate(['tabs/content'], navigationExtra);
