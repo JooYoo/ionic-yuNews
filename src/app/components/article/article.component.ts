@@ -11,7 +11,7 @@ export class ArticleComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit() {console.log(this.article)}
+  ngOnInit() {}
 
   openContent(){
     let navigationExtra: NavigationExtras = {

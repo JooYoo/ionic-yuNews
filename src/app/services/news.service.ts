@@ -14,13 +14,14 @@ const params = new HttpParams().set('apiKey', apiKey);
 })
 export class NewsService {
   private loading;
+  private todat;
 
   constructor(
     private http: HttpClient,
     public loadingController: LoadingController
   ) { }
 
-  async showLoading(){
+  async showLoading() {
     this.loading = await this.loadingController.create({
       duration: 1000
     });
@@ -32,14 +33,29 @@ export class NewsService {
     //this.showLoading();
     return this.http.get(`${apiUrl}/${url}`, { params })
     //.pipe(
-     // tap(value => {
-        // if(this.loading){
-        //   this.loading.dismiss();
-        // }
-       // console.log(value);
-     // })
+    // tap(value => {
+    // if(this.loading){
+    //   this.loading.dismiss();
+    // }
+    // console.log(value);
+    // })
     //);
   }
 
-  
+  //TODO: to finish write the api call string
+  getHeadlines(url){
+    let today = this.getToday();
+    return this.http.get(`${apiUrl}/${url}&from=${today}&to=${today}&sortBy=popularity`, { params });
+  }
+
+  getToday(): string {
+    let date = new Date();
+    let yyyy = date.getUTCFullYear();
+    let mm = date.getUTCMonth() + 1;
+    let dd = date.getUTCDate();
+
+    return `${yyyy}-${mm}-${dd}`;
+  }
+
+
 }

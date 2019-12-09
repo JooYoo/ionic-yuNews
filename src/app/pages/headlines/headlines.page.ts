@@ -9,12 +9,12 @@ import { NewsService } from '../../services/news.service';
 export class HeadlinesPage implements OnInit {
   news;
   categories = [
+    'World',
+    'Technology',
     'China',
     'Germany',
     'America',
-    'World',
     'Business',
-    'Technology',
     'Entertainment',
     'Sports',
     'Science'
@@ -23,7 +23,7 @@ export class HeadlinesPage implements OnInit {
   constructor(private newsService: NewsService) { }
 
   ngOnInit() {
-    this.getCategoryData(this.categories[3]);
+    this.getCategoryData(this.categories[0]);
   }
 
   onGetCategoryData(category) {
@@ -31,7 +31,10 @@ export class HeadlinesPage implements OnInit {
   }
 
   getCategoryData(category) {
-    this.news = this.newsService.getData(
+    // this.news = this.newsService.getData(
+    //   `everything?q=${category.toLowerCase()}`
+    // );
+    this.news = this.newsService.getHeadlines(
       `everything?q=${category.toLowerCase()}`
     );
   }
