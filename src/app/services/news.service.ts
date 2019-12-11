@@ -43,19 +43,23 @@ export class NewsService {
   }
 
   //TODO: to finish write the api call string
-  getHeadlines(url){
-    let today = this.getToday();
-    return this.http.get(`${apiUrl}/${url}&from=${today}&to=${today}&sortBy=popularity`, { params });
+  getHeadlines(url) {
+    let yesterday = this.getData(-1);
+    let today = this.getDate(0);
+    
+    return this.http.get(`${apiUrl}/${url}&from=${yesterday}&to=${today}&sortBy=popularity`, { params });
   }
 
-  getToday(): string {
+  getDate(offset: number): string {
     let date = new Date();
     let yyyy = date.getUTCFullYear();
     let mm = date.getUTCMonth() + 1;
-    let dd = date.getUTCDate();
+    let dd = date.getUTCDate() + offset;
 
     return `${yyyy}-${mm}-${dd}`;
   }
+
+
 
 
 }
